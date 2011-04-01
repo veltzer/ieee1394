@@ -20,8 +20,14 @@ sudo modprobe ohci1394
 * On which kernels should this work on?
 You only need it for 2.6.37 and later kernels since it was only in the 37 cycle that
 the old stack was removed. At the time of writing this it means that it is only applicable
-for kernels 2.6.37 and 2.6.38. I see no reason that this should also work in the future
-(meaning for 2.6.39 and later kernels).
+for kernels 2.6.37 and 2.6.38. I see no reason that this code should not work for future
+kernels (meaning for 2.6.39 and later kernels). In any case if you do find that this does
+not compile the errors will, in most probability, be minor. You can either fix them yourself
+(if you know a little bit about kernel programming) or drop me a line. If you do fix
+it yourself I would appreciate a patch to apply...
+
+* Who maintains this?
+Currently just me (Mark Veltzer <mark.veltzer@gmail.com>).
 
 * What is the output of all of this?
 Three kernel modules which are installed in /lib/modules/`unamr -r`/extra
@@ -67,7 +73,7 @@ TBD
 - run jack on boot
 TBD
 
-* Why did you do this? Are you insane?
+* Why did you do this?
 Well - I saw a post on a patch for the old stack at
 https://sicnarf.com/2011/running-the-old-firewire-stack-on-linux-2-6-38-rc3/ and after reviewing the patch
 it occured to me that the patch is quite non intrusive and could easily be made into a standalone piece of
