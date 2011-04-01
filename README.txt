@@ -13,9 +13,13 @@ make modules
 - install: 
 sudo make modules_install
 - load the modules:
-sudo modprobe raw1394
-sudo modprobe ohci1394
+sudo make modprobe
+- chown the resulting /dev file so that you can access it
+sudo make chown
 - now see that ffado-diag works...
+just run it and see that it prints that you have the modules, that the modules are loaded,
+that the /dev/raw1394 is there and that it can be accessed.
+- you can now go on to see if can work with the hardware that is attached to the firewire bus.
 
 * On which kernels should this work on?
 You only need it for 2.6.37 and later kernels since it was only in the 37 cycle that
