@@ -33,9 +33,21 @@ blacklist firewire-ohci
 blacklist firewire-sbp2
 =================================
 Now rebuild the default collection of modules to be loaded...
+TBD
 - make the new stack load automatically on boot
+TBD
 - control the permission on the /dev/raw1394 file using udev
+TBD
 - run jack on boot
+TBD
 
-			Mark Veltzer
+* Why did you do this? Are you insane?
+Well - I saw a post on a patch for the old stack at
+https://sicnarf.com/2011/running-the-old-firewire-stack-on-linux-2-6-38-rc3/ and after reviewing the patch
+it occured to me that the patch is quite non intrusive and could easily be made into a standalone piece of
+software which will ease it's use for many people since it will not require a kernel recompile (which a lot
+of people are not that adapt at and which is turning a little bit harder with each passing day).
+Half an hour later I had the patch ready with minimal edits to the code.
+
+			Mark Veltzer, 2011
 			mark.veltzer@gmail.com
