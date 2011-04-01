@@ -74,12 +74,16 @@ debug:
 	$(info multifile2-objs is $(multifile2-objs))
 # easy macros to enable kernel development (these make little sense in this context)
 .PHONY: insmod
-insmod:
-	-sudo rmmod $(NAME)
-	sudo insmod $(KO)
+insmod: rmmod
+	@sudo insmod ./ieee1394.ko
+	@sudo insmod ./raw1394.ko
+	@sudo insmod ./ohci1394.ko
 .PHONY: rmmod
 rmmod:
-	sudo rmmod $(NAME)
+	-@sudo fuser -k /dev/raw1394
+	-@sudo rmmod ohci1394
+	-@sudo rmmod raw1394
+	-@sudo rmmod ieee1394
 .PHONY: modinfo
 modinfo:
 	modinfo $(KO)

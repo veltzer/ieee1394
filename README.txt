@@ -51,27 +51,48 @@ since it will override the version you put into the Makefile.
 
 * How do I make this happen automatically on boot ?
 - black list the new firewire stack
-edit /etc/modprobe.d/blacklist-firewire.conf and turn it into:
-=================================
-# Select the legacy firewire stack over the new CONFIG_FIREWIRE one.
+	edit /etc/modprobe.d/blacklist-firewire.conf and turn it into:
+	=================================
+	# Select the legacy firewire stack over the new CONFIG_FIREWIRE one.
 
-#blacklist ohci1394
-#blacklist sbp2
-#blacklist dv1394
-#blacklist raw1394
-#blacklist video1394
+	#blacklist ohci1394
+	#blacklist sbp2
+	#blacklist dv1394
+	#blacklist raw1394
+	#blacklist video1394
 
-blacklist firewire-ohci
-blacklist firewire-sbp2
-=================================
-Now rebuild the default collection of modules to be loaded...
-TBD
+	blacklist firewire-ohci
+	blacklist firewire-sbp2
+	=================================
+- now rebuild the default collection of modules to be loaded on boot (initrd type systems
+	like ubuntu).
+	mark@cantor:~/links/ieee1394$ sudo update-initramfs -k all -u
 - make the new stack load automatically on boot
-TBD
+	TBD
 - control the permission on the /dev/raw1394 file using udev
-TBD
-- run jack on boot
-TBD
+	change /etc/udev/rules.d/40-permissions.rules (in my case I had to create it) to include:
+	=================================
+	# IEEE1394 (firewire) devices
+	# Please note that raw1394 gives unrestricted, raw access to every single
+	# device on the bus and those devices may do anything as root on your system.
+	# Yes, I know it also happens to be the only way to rewind your video camera,
+	# but it's not going to be group "video", okay?
+	KERNEL=="raw1394", GROUP="audio"
+	=================================
+	now restart udev to read the definitions
+	mark@cantor:~/links/ieee1394$ sudo restart udev
+- configure jack correctly
+	first configure jack properly via qjackctl. Configure it until you see that
+	it runs properly. Pay attention to these parameters:
+	- driver to use: firewire
+	- sample rate: something that your hardware supports (mine could only
+	do 48000).
+	- periods/buffer: mine could only do 2.
+	- audio: should be in duplex for most cards.
+	- interface: choose the right one if you have multiple cards.
+- run jack on login automatically
+	In ubuntu you can go to "System->Preferences->Startup Applications" and
+	add a new application that will run "source ~/.jackdrc".
 
 * Why did you do this?
 Well - I saw a post on a patch for the old stack at
