@@ -17,6 +17,32 @@ sudo modprobe raw1394
 sudo modprobe ohci1394
 - now see that ffado-diag works...
 
+* On which kernels should this work on?
+You only need it for 2.6.37 and later kernels since it was only in the 37 cycle that
+the old stack was removed. At the time of writing this it means that it is only applicable
+for kernels 2.6.37 and 2.6.38. I see no reason that this should also work in the future
+(meaning for 2.6.39 and later kernels).
+
+* What is the output of all of this?
+Three kernel modules which are installed in /lib/modules/`unamr -r`/extra
+and are called ieee1394.ko ohci1394.ko and raw1394.ko.
+You only need to load ohci1394.ko and raw1394.ko since they both depend on ieee1394.ko and will
+trigger it's loading. For most application raw1394.ko will suffice.
+
+* To which kernel am I compiling the modules if I follow the instructions above?
+To the kernel you are running on the version of which you can find out using 'uname -r'
+
+* What if I want to run on one kernel and compile to another?
+Run the make commands above with KVER=[the version of the kernel you want the modules for].
+For example:
+mark@cantor:~/ieee1394$ make KVER=2.6.38.1-generic
+OR
+Edit the file 'Makefile', find the line that says 'KVER?=$(shell uname -r)'
+and change it. For the same kernel as before it would become:
+KVER?=2.6.38.1-generic
+In this case no command line KVER is needed and it is actually counter productive
+since it will override the version you put into the Makefile.
+
 * How do I make this happen automatically on boot ?
 - black list the new firewire stack
 edit /etc/modprobe.d/blacklist-firewire.conf and turn it into:
