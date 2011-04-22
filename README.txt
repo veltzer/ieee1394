@@ -34,13 +34,13 @@ it yourself I would appreciate a patch to apply...
 Currently just me (Mark Veltzer <mark.veltzer@gmail.com>).
 
 * What is the output of all of this?
-Three kernel modules which are installed in /lib/modules/`unamr -r`/extra
+Three kernel modules which are installed in /lib/modules/`uname -r`/extra
 and are called ieee1394.ko ohci1394.ko and raw1394.ko.
 You only need to load ohci1394.ko and raw1394.ko since they both depend on ieee1394.ko and will
 trigger it's loading. For most application raw1394.ko will suffice.
 
 * To which kernel am I compiling the modules if I follow the instructions above?
-To the kernel you are running on the version of which you can find out using 'uname -r'
+To the kernel you are running on, the version of which you can find out using 'uname -r'
 
 * What if I want to run on one kernel and compile to another?
 Run the make commands above with KVER=[the version of the kernel you want the modules for].
