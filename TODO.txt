@@ -1,0 +1,3 @@
+- add makefile target that checks that you don't already have the drivers.
+- do the installation of the drivers more carefully: do not do it if they are already
+	there...

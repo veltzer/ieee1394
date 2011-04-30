@@ -29,6 +29,7 @@ kernels (meaning for 2.6.39 and later kernels). In any case if you do find that 
 not compile the errors will, in most probability, be minor. You can either fix them yourself
 (if you know a little bit about kernel programming) or drop me a line. If you do fix
 it yourself I would appreciate a patch to apply...
+I run this on ubuntu systems (10.xx, 11.04).
 
 * Who maintains this?
 Currently just me (Mark Veltzer <mark.veltzer@gmail.com>).
