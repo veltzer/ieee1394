@@ -88,9 +88,18 @@ rmmod:
 modprobe:
 	sudo modprobe raw1394
 	sudo modprobe ohci1394
+	sudo modprobe ieee1394
 .PHONY: modinfo
 modinfo:
 	modinfo $(KO)
 .PHONY: chown
 chown:
 	sudo chown $(USER).$(USER) /dev/raw1394
+.PHONY: modprobe_new
+modprobe_new:
+	sudo modprobe firewire_core
+	sudo modprobe firewire_ohci
+.PHONY: rmmod_new
+rmmod_new:
+	-sudo rmmod firewire_ohci
+	-sudo rmmod firewire_core
