@@ -103,3 +103,9 @@ modprobe_new:
 rmmod_new:
 	-sudo rmmod firewire_ohci
 	-sudo rmmod firewire_core
+
+.PHONY: plugold
+plugold: rmmod_new modprobe chown
+
+.PHONY: plugnew
+plugnew: rmmod modprobe_new
