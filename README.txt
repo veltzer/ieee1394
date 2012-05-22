@@ -5,7 +5,7 @@ You may have some hardware and software (like audio recording software) that wan
 the old firewire stack.
 
 * What do you need to compile this?
-make, gcc, kernel headers
+make, gcc, kernel headers.
 
 * How do you build and install this?
 - compile:
