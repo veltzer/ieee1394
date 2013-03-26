@@ -76,7 +76,7 @@
 #include <asm/byteorder.h>
 #include <asm/errno.h>
 #include <asm/param.h>
-#include <asm/system.h>
+//#include <asm/system.h>
 #include <asm/types.h>
 
 #ifdef CONFIG_IEEE1394_SBP2_PHYS_DMA

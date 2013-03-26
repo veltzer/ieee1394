@@ -22,7 +22,7 @@ obj-$(CONFIG_IEEE1394_ETH1394) += eth1394.o
 obj-$(CONFIG_PROVIDE_OHCI1394_DMA_INIT) += init_ohci1394_dma.o
 
 # the base name of the module (the name of the variable is your own)
-NAMES:=ieee1394 raw1394 ohci1394
+NAMES:=ieee1394 raw1394 ohci1394 video1394 dv1394 sbp2 pcilynx
 # the name of the .ko
 KOS:=$(addsuffix .ko,$(NAMES))
 # the .ko file that will be generated
