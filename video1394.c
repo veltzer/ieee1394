@@ -1215,7 +1215,10 @@ static unsigned int video1394_poll(struct file *file, poll_table *pt)
 
 static int video1394_open(struct inode *inode, struct file *file)
 {
-	int i = ieee1394_file_to_instance(file);
+	/* Mark Veltzer: who wrote this ieee1394 junk?!? */
+	/* old code: */ 
+	/* int i = ieee1394_file_to_instance(file); */
+	int i = iminor(inode)-IEEE1394_MINOR_BLOCK_VIDEO1394 * 16; 
 	struct ti_ohci *ohci;
 	struct file_ctx *ctx;
 

@@ -121,7 +121,7 @@ MODULE_PARM_DESC(max_speed, "Limit data transfer speed (5 <= 3200, "
  * Set serialize_io to 0 or N to use dynamically appended lists of command ORBs.
  * This is and always has been buggy in multiple subtle ways. See above TODOs.
  */
-static int sbp2_serialize_io = 1;
+static bool sbp2_serialize_io = 1;
 module_param_named(serialize_io, sbp2_serialize_io, bool, 0444);
 MODULE_PARM_DESC(serialize_io, "Serialize requests coming from SCSI drivers "
 		 "(default = Y, faster but buggy = N)");
@@ -156,7 +156,7 @@ MODULE_PARM_DESC(max_sectors, "Change max sectors per I/O supported "
  * concurrent logins. Depending on firmware, four or two concurrent logins
  * are possible on OXFW911 and newer Oxsemi bridges.
  */
-static int sbp2_exclusive_login = 1;
+static bool sbp2_exclusive_login = 1;
 module_param_named(exclusive_login, sbp2_exclusive_login, bool, 0644);
 MODULE_PARM_DESC(exclusive_login, "Exclusive login to sbp2 device "
 		 "(default = Y, use N for concurrent initiators)");
@@ -224,7 +224,7 @@ MODULE_PARM_DESC(workarounds, "Work around device bugs (default = 0"
  * independent of the implementation of the ieee1394 nodemgr, the longer format
  * is recommended for future use.
  */
-static int sbp2_long_sysfs_ieee1394_id;
+static bool sbp2_long_sysfs_ieee1394_id;
 module_param_named(long_ieee1394_id, sbp2_long_sysfs_ieee1394_id, bool, 0644);
 MODULE_PARM_DESC(long_ieee1394_id, "8+3+2 bytes format of ieee1394_id in sysfs "
 		 "(default = backwards-compatible = N, SAM-conforming = Y)");
