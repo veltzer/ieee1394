@@ -273,7 +273,9 @@ int dma_region_mmap(struct dma_region *dma, struct file *file,
 	vma->vm_ops = &dma_region_vm_ops;
 	vma->vm_private_data = dma;
 	vma->vm_file = file;
-	vma->vm_flags |= VM_RESERVED | VM_ALWAYSDUMP;
+	// Mark Veltzer, I don't think we need this flag...
+	//vma->vm_flags |= VM_RESERVED | VM_ALWAYSDUMP;
+	vma->vm_flags |= VM_RESERVED;
 
 	return 0;
 }

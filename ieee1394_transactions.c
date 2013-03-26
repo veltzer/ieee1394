@@ -19,7 +19,7 @@
 
 #include <asm/bug.h>
 #include <asm/errno.h>
-#include <asm/system.h>
+//#include <asm/system.h>
 
 #include "ieee1394.h"
 #include "ieee1394_types.h"

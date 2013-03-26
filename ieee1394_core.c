@@ -36,7 +36,7 @@
 #include <linux/preempt.h>
 #include <linux/time.h>
 
-#include <asm/system.h>
+//#include <asm/system.h>
 #include <asm/byteorder.h>
 
 #include "ieee1394_types.h"
@@ -59,7 +59,7 @@ module_param(disable_nodemgr, int, 0444);
 MODULE_PARM_DESC(disable_nodemgr, "Disable nodemgr functionality.");
 
 /* Disable Isochronous Resource Manager functionality */
-int hpsb_disable_irm = 0;
+bool hpsb_disable_irm = 0;
 module_param_named(disable_irm, hpsb_disable_irm, bool, 0444);
 MODULE_PARM_DESC(disable_irm,
 		 "Disable Isochronous Resource Manager functionality.");

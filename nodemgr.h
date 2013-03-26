@@ -21,8 +21,9 @@
 #define _IEEE1394_NODEMGR_H
 
 #include <linux/device.h>
-#include <asm/system.h>
+//#include <asm/system.h>
 #include <asm/types.h>
+#include <linux/module.h>
 
 #include "ieee1394_core.h"
 #include "ieee1394_transactions.h"

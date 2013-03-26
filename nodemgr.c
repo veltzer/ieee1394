@@ -1390,7 +1390,9 @@ static int update_pdrv(struct device *dev, void *data)
 
 	ud = container_of(dev, struct unit_directory, unit_dev);
 	if (ud->ne == ne) {
-		drv = get_driver(ud->device.driver);
+		// Mark Veltzer: could be creating a race condition here...
+		//drv = get_driver(ud->device.driver);
+		drv=ud->device.driver;
 		if (drv) {
 			error = 0;
 			pdrv = container_of(drv, struct hpsb_protocol_driver,
@@ -1402,7 +1404,8 @@ static int update_pdrv(struct device *dev, void *data)
 			}
 			if (error)
 				device_release_driver(&ud->device);
-			put_driver(drv);
+			// Mark Veltzer: could be creating a race condition here...
+			//put_driver(drv);
 		}
 	}
 
