@@ -13,3 +13,4 @@ Module.symvers
 modules.order
 *.o.cmd
 *.ko.cmd
+.*.d
