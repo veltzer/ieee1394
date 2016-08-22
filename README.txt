@@ -1,5 +1,16 @@
 This is the old firewire stack for new linux kernels
 ====================================================
+
+      ************* NOTICE ***********
+
+	This project is inactive as
+	it no longer compiles with new
+	Linux kernels and I do not have
+	the time or will to keep synching
+	it with new kernels.
+
+      ************* NOTICE ***********
+
 * Why should you want this?
 You may have some hardware and software (like audio recording software) that wants
 the old firewire stack.
