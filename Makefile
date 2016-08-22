@@ -43,6 +43,10 @@ KDIR:=/lib/modules/$(KVER)/build
 # You can override using "make V=1"
 V:=0
 
+.PHONY: all
+all:
+	@true
+
 # the next four targets (modules, modules_install, clean, help) are targets defined
 # by the kernel makefile...
 .PHONY: modules
