@@ -1,7 +1,3 @@
-# NOTES:
-# CURDIR is the current directory (GNU make built in variable).
-#
-
 #
 # Makefile for the Linux IEEE 1394 implementation
 #
