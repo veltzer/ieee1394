@@ -5,6 +5,7 @@
 # *.[oa]
 # *~
 
+*.stamp
 *.o
 *.ko
 *.mod.c
