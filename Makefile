@@ -54,6 +54,9 @@ modules_install:
 .PHONY: clean
 clean:
 	$(MAKE) -C $(KDIR) M=$(CURDIR) V=$(V) clean
+.PHONY: clean_hard
+clean_hard:
+	git clean -qffxd
 .PHONY: help
 help:
 	$(MAKE) -C $(KDIR) M=$(CURDIR) V=$(V) help
